@@ -70,6 +70,7 @@ public class Downloader implements Runnable, IProcessor {
     }
     final HttpURLConnection uc = (HttpURLConnection) url.openConnection();
     uc.setInstanceFollowRedirects(true);
+    uc.setRequestProperty("User-Agent", "ForgeBuilder/0.0.1 (+https://github.com/rinsuki/ForgeBuilder)");
     if (fa[0].exists())
       uc.setRequestProperty("If-None-Match", Utils.fileToString(fa[0], Utils.UTF_8));
     if (fa[1].exists())
