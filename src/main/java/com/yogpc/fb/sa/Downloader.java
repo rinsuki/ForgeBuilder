@@ -77,6 +77,7 @@ public class Downloader implements Runnable, IProcessor {
       uc.setRequestProperty("If-Modified-Since", Utils.fileToString(fa[1], Utils.UTF_8));
     uc.connect();
     final int res = uc.getResponseCode();
+    System.out.printf("[%03d] %s\n", res, url.toString());
     if (res == HttpURLConnection.HTTP_NOT_MODIFIED)
       return true;
     if (res == HttpURLConnection.HTTP_NOT_FOUND || res == HttpURLConnection.HTTP_FORBIDDEN)
