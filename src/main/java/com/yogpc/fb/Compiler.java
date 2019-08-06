@@ -72,19 +72,20 @@ public final class Compiler {
     osw.write(src_dir.getPath());
     osw.write("\n-d ");
     osw.write(bin_dir.getPath());
-    osw.write("\n-classpath ");
+    osw.write("\n-classpath \"");
     for (final File f : cp) {
       osw.write(f.getPath());
       osw.write(File.pathSeparator);
     }
     if (c != null)
       osw.write(c.jar.getPath());
-    osw.write('\n');
+    osw.write("\"\n");
     for (final File f : sources) {
       osw.write(f.getPath());
       osw.write('\n');
     }
     osw.close();
+    Thread.sleep(10000);
     fos.close();
     final LinkedList<String> l = new LinkedList<String>();
     l.add("javac");
